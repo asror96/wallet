@@ -1,0 +1,27 @@
+CREATE TABLE wallets
+(
+    uid CHAR(64) NOT NULL UNIQUE,
+    balance DECIMAL(10, 2) DEFAULT 0 NOT NULL
+);
+
+CREATE TABLE transactions
+(
+    id serial not null unique,
+    wallet_from CHAR(64) NOT NULL,
+    wallet_to CHAR(64) NOT NULL,
+    sum DECIMAL(10, 2) DEFAULT 0 NOT NULL,
+    FOREIGN KEY (wallet_from) REFERENCES wallets(uid),
+    FOREIGN KEY (wallet_to) REFERENCES wallets(uid)
+);
+INSERT INTO wallets (uid, balance)
+VALUES
+    ('e240d825d255af751f5f55af8d9671beabdf2236c0a3b4e2639b3e182d994c88', 100.00),
+    ('d240d825d255af751f5f55af8d9671beabdf2236c0a3b4e2639b3e182d994c87', 100.00),
+    ('c240d825d255af751f5f55af8d9671beabdf2236c0a3b4e2639b3e182d994c86', 100.00),
+    ('b240d825d255af751f5f55af8d9671beabdf2236c0a3b4e2639b3e182d994c85', 100.00),
+    ('a240d825d255af751f5f55af8d9671beabdf2236c0a3b4e2639b3e182d994c84', 100.00),
+    ('9240d825d255af751f5f55af8d9671beabdf2236c0a3b4e2639b3e182d994c83', 100.00),
+    ('8240d825d255af751f5f55af8d9671beabdf2236c0a3b4e2639b3e182d994c82', 100.00),
+    ('7240d825d255af751f5f55af8d9671beabdf2236c0a3b4e2639b3e182d994c81', 100.00),
+    ('6240d825d255af751f5f55af8d9671beabdf2236c0a3b4e2639b3e182d994c80', 100.00),
+    ('5240d825d255af751f5f55af8d9671beabdf2236c0a3b4e2639b3e182d994c79', 100.00);
